@@ -4,7 +4,6 @@ metadata:
 name: cleanup
 
 spec:
-description: This task will clean up a workspace by deleting all the files.
 workspaces:
 - name: source
 
@@ -21,7 +20,7 @@ runAsUser: 0
 script: |
 #!/usr/bin/env sh
 set -eu
-echo "Removendo todos os arquivos de ${WORKSPACE_SOURCE_PATH} ..."
+echo "Cleaning workspace..."
 if [ -d "${WORKSPACE_SOURCE_PATH}" ] ; then
 rm -rf "${WORKSPACE_SOURCE_PATH:?}"/*
 rm -rf "${WORKSPACE_SOURCE_PATH}"/.[!.]*
@@ -41,7 +40,7 @@ workspaces:
 
 params:
 - name: args
-description: Argumentos a serem passados para o nose
+description: Arguments to pass to nose
 type: string
 default: "-v"
 
